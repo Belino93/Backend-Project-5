@@ -1,5 +1,6 @@
 const { sequelize } = require('../models')
 const models = require('../models')
+const { Op } = require("sequelize");
 
 const MovieController = {}
 
@@ -39,10 +40,13 @@ MovieController.getMovie = (req, res) => {
 // Search by title
 MovieController.getMovieByTitle = async(req, res) => {
     try {
-        const title = req.params.title;
+        let title = req.params.title.toLowerCase();
         models.Movie.findAll({
             where: {
-                title: title
+                title:
+                {
+                    [Op.like] :`%${title}%`
+                } 
             }
         })
         .then(resp => {res.send(resp)})
