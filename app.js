@@ -2,13 +2,21 @@ const express = require("express");
 const app = express();
 const db = require('./db/db')
 const router = require('./router')
+const cors = require('cors')
 const morgan = require('morgan')
 const { sequelize } = require('./models/index')
 const PORT = 3005
-
+var corsOptions = {
+    origin: "*",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    preflightContinue: false,
+    optionsSuccessStatus: 204
+  };
 
  // Middlewares
 app.use(express.json())
+
+app.use(cors(corsOptions));
 app.use(router)
 
 

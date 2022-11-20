@@ -2,23 +2,18 @@ const { sequelize } = require('../models');
 const models = require('../models');
 
 const LeaseController = {}
-
+// Para cambiar
 LeaseController.newLease = async (req, res) => {
-    const user_id = req.auth.user_id;
+    
     try {
-        const { articles_id } = req.body;
+        const user_id = req.auth.user_id;
+        const  movie_id  = req.body;
         const resp = await models.Lease.create({
-            user_id: user_id,
+            user_id,
+            movie_id,
         })
-        if (articles_id) {
-            articles_id.forEach(async (article_id) => {
-                await sequelize.query(`INSERT INTO Articles_Lease(article_id, lease_id) VALUES (${article_id},${resp.lease_id})`);
-            });
-            res.send('Lease created');
-        } else {
-            throw new Error('Article error');
-        }
-
+        res.status(200).json({message:'Lease created'})
+        
     } catch (error) {
         res.send(error);
     }

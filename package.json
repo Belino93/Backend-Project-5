@@ -28,6 +28,7 @@
     "sequelize-cli": "^6.5.2"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "jsonwebtoken": "^8.5.1"
   }

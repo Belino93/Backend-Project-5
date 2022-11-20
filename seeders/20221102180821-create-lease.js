@@ -6,10 +6,28 @@ module.exports = {
 
     await queryInterface.bulkInsert('Leases', [
       {
-        user_id: 1
+        user_id: 1,
+        movie_id: 1
       },
       {
-        user_id: 2
+        user_id: 2,
+        movie_id: 1
+      },
+      {
+        user_id: 1,
+        movie_id: 4
+      },
+      {
+        user_id: 1,
+        movie_id: 8
+      },
+      {
+        user_id: 2,
+        movie_id: 3
+      },
+      {
+        user_id: 2,
+        movie_id: 12
       },
     ], {});
 

@@ -11,9 +11,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Movie.belongsTo(models.Article, {
-        foreignKey: {
-          name: 'article_id',
+      Movie.hasOne(models.Lease, {
+        foreignKey:{
+          name:'movie_id',
           allowNull:false
         }
       })

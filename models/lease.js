@@ -11,13 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Lease.belongsToMany(models.Article, {
-        through: "Articles_Lease",
-        foreignKey: {
-          name:"lease_id"
-        },
-        timestamps:false
-      })
+      
     }
   }
   Lease.init({
