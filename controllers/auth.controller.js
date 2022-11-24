@@ -60,10 +60,9 @@ const authRegisterController = async (req, res) => {
     }
     // Validate email is unique
     try {
-        assertEmailIsUniqueService(body.email);
+        await assertEmailIsUniqueService(body.email);
     } catch (error) {
-        console.error(error);
-        res.status(400).json({message: "Email is already registered: " + error.message});
+        res.status(400).json({message: "Email is already registered:" + error.message});
         return
     }
     // Save user in DB
