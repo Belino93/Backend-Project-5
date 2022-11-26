@@ -31,7 +31,8 @@ const authLoginController = async(req, res) => {
     const jwt = jsonwebtoken.sign({
         email: userFound.email,
         user_role : userFound.user_role,
-        user_id : userFound.user_id
+        user_id : userFound.user_id,
+        name: userFound.name,
     }, secret);
 
     res.status(200).json({
@@ -62,7 +63,7 @@ const authRegisterController = async (req, res) => {
     try {
         await assertEmailIsUniqueService(body.email);
     } catch (error) {
-        res.status(400).json({message: "Email is already registered:" + error.message});
+        res.status(400).json({message: "Email is already registered" + error.message});
         return
     }
     // Save user in DB

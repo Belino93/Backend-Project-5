@@ -24,7 +24,7 @@ const assertEmailIsUniqueService = async (email) => {
   // Validate is unique in DB
   const user = await models.User.findOne({ where: { email: email } });
   if (user) {
-    throw new Error('Email already used')
+    throw new Error()
   }
 };
 
