@@ -11,7 +11,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      
+      Lease.hasMany(models.Movie, {
+        foreignKey:'movie_id'
+      })
     }
   }
   Lease.init({
@@ -24,10 +26,15 @@ module.exports = (sequelize, DataTypes) => {
       type:DataTypes.INTEGER,
       allowNull:false
     },
+    refund:{
+      type:DataTypes.BOOLEAN,
+      allowNull:false,
+      defaultValue:false
+    }
   }, {
     sequelize,
     modelName: 'Lease',
-    timestamps:false,
+    
   });
   return Lease;
 };
