@@ -15,7 +15,7 @@ UserController.getUser = async (req, res) => {
     try {
         const resp = await models.User.findOne({
             where: { email: email },
-            attributes: ['name', 'user_role', 'email']
+            attributes: ['name','surname', 'user_role', 'email']
         })
         res.send(resp);
     } catch (error) {
