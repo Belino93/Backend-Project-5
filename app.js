@@ -5,7 +5,7 @@ const router = require('./router')
 const cors = require('cors')
 const morgan = require('morgan')
 const { sequelize } = require('./models/index')
-const PORT = 3005
+let PORT = process.env.PORT ||3005
 var corsOptions = {
     origin: "*",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
