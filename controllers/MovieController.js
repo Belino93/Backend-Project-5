@@ -40,7 +40,7 @@ MovieController.getMovie = (req, res) => {
 // Search by title
 MovieController.getMovieByTitle = async(req, res) => {
     try {
-        let title = req.params.title.toLowerCase();
+        let title = req.body.title.toLowerCase();
         models.Movie.findAll({
             where: {
                 title:

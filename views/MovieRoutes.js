@@ -13,7 +13,7 @@ router.get('/top', MovieController.getTopRatedMovies)
 router.get('/id/:id', MovieController.getMovie)
 
 // Busqueda por titulo
-router.get('/title/:title', MovieController.getMovieByTitle)
+router.post('/title', MovieController.getMovieByTitle)
 
 // Busqueda por genero
 router.get('/genre/:genre', MovieController.getMovieByGenre)

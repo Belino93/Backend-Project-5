@@ -21,12 +21,15 @@ LeaseController.newLease = async (req, res) => {
 
 LeaseController.updateLease = async (req, res) => {
   try {
-    const {lease_id} = req.body
+    const { lease_id } = req.body;
     const user_id = req.auth.user_id;
     if (!user_id) {
       throw new Error("Authorization fail");
     }
-    const lease = await models.Lease.update({ refund: 1 }, { where: {lease_id} });
+    const lease = await models.Lease.update(
+      { refund: 1 },
+      { where: { lease_id } }
+    );
     if (!lease) {
       throw new Error("Update fail");
     }
@@ -39,18 +42,16 @@ LeaseController.updateLease = async (req, res) => {
 LeaseController.showLease = async (req, res) => {
   try {
     const user_id = req.auth.user_id;
-    // const resp = await sequelize.query(`SELECT l.user_id, l.createdAt, l.refund , m.movie_id, m.title, m.poster FROM Leases AS l
-    // INNER JOIN Movies AS m ON l.movie_id = m.movie_id 
-    // WHERE l.user_id=${user_id} AND l.refund = 0`)
+
     const resp = await models.Lease.findAll({
       where: {
-        user_id:user_id,
-        refund : 0,
+        user_id: user_id,
+        refund: 0,
       },
       include: {
-        model:models.Movie
-      }
-    })
+        model: models.Movie,
+      },
+    });
     res.send(resp);
   } catch (error) {
     res.send(error);
