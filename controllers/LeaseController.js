@@ -54,7 +54,7 @@ LeaseController.showLease = async (req, res) => {
     });
     res.send(resp);
   } catch (error) {
-    res.send(`${error}`);
+    res.send(`Fallo registro`);
   }
 };
 
