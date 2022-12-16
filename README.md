@@ -155,11 +155,13 @@ package-lock.json
 * Los usuarios que no estén logados pueden:
     * Acceder a los enpoints de películas y series.
     * Registrarse y loguearse.
+    
 * Los usuarios logueados con rol 'user', pueden además:
     * Extraer su usuario.
     * Cambiar su nombre de usuario.
     * Acceder a sus préstamos.
     * Generar un nuevo préstamo propio.
+    
 * Los usuarios con rol 'admin', también pueden:
     * Acceder a todos los pedidos.
     * Borrar un usuario.
